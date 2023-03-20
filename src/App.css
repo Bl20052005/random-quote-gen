@@ -1,19 +1,113 @@
+:root {
+  --main-color: #bcd8d8;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #root {
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr minmax(100px, 1fr) 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   height: 100vh;
   width: 100vw;
+  background: #222233;
+  color: var(--main-color);
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  z-index: 1;
+  transition: background 1s;
+}
+
+#new-quote, #copy, #quote-box {
+  transition: 1s;
+}
+
+#root:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(
+    to bottom,
+    hsl(344, 100%, 50%),
+    hsl(31, 100%, 40%)
+  );
+  z-index: -1;
+  transition-duration: 1s;
+  opacity: 0;
+}
+
+#root:hover::before {
+  opacity: 1;
 }
 
 #quote-box {
   display: grid;
+  grid-template-rows: auto auto auto;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  border: 1px solid white;
-  padding: 10px;
+  width: auto;
+  height: auto;
+  border: 5px solid var(--main-color);
+  border-radius: 5%;
+  padding: 20px;
   margin: 10px;
   grid-column: 2 / 3;
   grid-row: 2 / 3;
+}
+
+#text {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+#text::before {
+  content: '"';
+  font-size: 40px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#author {
+  text-align: right;
+  font-weight: normal;
+}
+
+#author::before {
+  content: "- ";
+}
+
+#links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button {
+  background-color: transparent;
+  border-radius: 5%;
+  border: 2px solid var(--main-color);
+  padding: 10px;
+  font-size: 15px;
+  color: var(--main-color);
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#tweet-quote {
+  background-color: transparent;
+  border-radius: 5%;
+  border: 2px solid var(--main-color);
+  padding: 10px;
+  text-decoration: none;
+  color: inherit;
+  font-size: 15px;
 }
